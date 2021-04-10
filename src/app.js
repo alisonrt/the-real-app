@@ -1,3 +1,5 @@
+const apiKey = "20f80f60d74acf5419e80528f290a5b9";
+
 function dateFormat(timestamp) {
     let date = new Date(timestamp);
     let hours = date.getHours();
@@ -29,9 +31,25 @@ function displayTemp(response) {
     iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-let city = "Seattle";
-let apiKey = "20f80f60d74acf5419e80528f290a5b9";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+let searchForm = document.querySelector("#search-city-form");
+    searchForm.addEventListener("submit", searchCity);
 
-
-axios.get(apiUrl).then(displayTemp);
+function searchCity(event) {
+    console.log("search-city-form submitted");
+    event.preventDefault();
+    let cityInput = document.querySelector("#city-form");
+    let city = cityInput.value;
+    let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiURL).then(displayTemp);
+}
+function showPosition(position) {
+    let lat = position.coords.latitude;
+    let long = position.coords.longitude;
+    let units = "metric";
+    let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`
+    axios.get(`${apiURL}&appid=${apiKey}`).then(displayTemp);
+    }
+function getCurrentLocandTemp(event) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+    }
+getCurrentLocandTemp();

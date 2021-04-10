@@ -17,15 +17,13 @@
             <div class="app-wrap">
             <div class="weather-app">
                 <div class="loc-overview">
-                    <h1>
-                        New York
+                    <h1 id="city">
                     </h1>
                     <ul>
-                        <li>
+                        <li id="day">
                             Friday 05:00
                         </li>
-                        <li>
-                            Clear
+                        <li id="conditions">
                         </li>
                     </ul>
                 </div>
@@ -34,20 +32,17 @@
                         <div class="clearfix weather-temp">
                             <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="clear" class="float-left"/>
                             <div class="float-left">
-                                <strong>12</strong><span class="units">˚C | F</span>
+                                <strong id="temperature"></strong><span class="units">˚C | F</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-med-6">
                         <ul>
                             <li>
-                                Precipitation: 0%
+                            Humidity: <span id="humidity"></span>%
                             </li>
                             <li>
-                                Humidity: 73%
-                            </li>
-                            <li>
-                                Wind: 2 km/h
+                            Wind: <span id="windspeed"></span> k/mh
                             </li>
                         </ul>
                     </div>

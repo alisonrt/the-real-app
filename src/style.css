@@ -16,6 +16,7 @@ li {
   list-style-type: none;
   font-size: 16px;
   line-height: 20px;
+  text-transform: capitalize;
   margin: 0;
   padding: 0;
 }

@@ -13,6 +13,8 @@ function dateFormat(timestamp) {
     }
 }
 
+
+
 function displayTemp(response) {
     let tempElement = document.querySelector("#temperature");
     let cityElement = document.querySelector("#city");
@@ -57,7 +59,6 @@ let celsiusLink = document.querySelector("#c-conversion");
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
 let celsiusTemp = null;
-
 
 let searchForm = document.querySelector("#search-city-form");
     searchForm.addEventListener("submit", searchCity);

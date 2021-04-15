@@ -59,3 +59,21 @@ li:first-letter {
 .weather-temp .active:hover {
   text-decoration: none;
 }
+
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.forecast-date {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.forecast-temp {
+  font-size: 11px;
+}
+
+.forecast-temp-min {
+  opacity: 0.6;
+}

@@ -114,6 +114,7 @@ function searchCity(event) {
 function showPosition(position) {
     let lat = position.coords.latitude;
     let long = position.coords.longitude;
+    console.log(lat, long)
     let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`
     axios.get(`${apiURL}&appid=${apiKey}`).then(displayTemp);
 }

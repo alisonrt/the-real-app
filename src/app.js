@@ -39,7 +39,7 @@ function displayForecast(values) {
       <div class="col-2">
         <div class="weather-forecast-date">${dateFormat(day.dt * 1000, false)}</div>
         <img
-          src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"
+          src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"
           alt=""
           width="42"
         />

@@ -102,30 +102,32 @@ function displayTemp(values) {
     // response.data.coord: {lat: 123.123, lon: 124.124}
     getForecast({lat: values.lat, lon: values.lon}); // Take the response object and pass its data.coord value to getForecast, using the example above would mean that we're passing: {lat: 123.123, lon: 124.124} to getForecast
 }
-function showFahrenheitTemp (event) {
-    event.preventDefault();
-    let tempElement = document.querySelector("#temperature");
-    celsiusLink.classList.remove("active");
-    fahrenheitLink.classList.add("active");
-    let fahrenheitTemp = (celsiusTemp * 9) /5 + 32;
-    tempElement.innerHTML = Math.round(fahrenheitTemp);
-}
+// function showFahrenheitTemp (event) {
+//     event.preventDefault();
+//     let tempElement = document.querySelector("#temperature");
+//     celsiusLink.classList.remove("active");
+//     fahrenheitLink.classList.add("active");
+//     let fahrenheitTemp = (celsiusTemp * 9) /5 + 32;
+//     tempElement.innerHTML = Math.round(fahrenheitTemp);
+// }
 
-function showCelsiusTemp (event) {
-    event.preventDefault ();
-    let tempElement = document.querySelector("#temperature");
-    fahrenheitLink.classList.remove("active");
-    celsiusLink.classList.add("active");
-    tempElement.innerHTML = Math.round(celsiusTemp);
-}
+// function showCelsiusTemp (event) {
+//     event.preventDefault ();
+//     let tempElement = document.querySelector("#temperature");
+//     fahrenheitLink.classList.remove("active");
+//     celsiusLink.classList.add("active");
+//     tempElement.innerHTML = Math.round(celsiusTemp);
+// }
 
-let fahrenheitLink = document.querySelector("#f-conversion");
-fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+// let fahrenheitLink = document.querySelector("#f-conversion");
+// fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 
-let celsiusLink = document.querySelector("#c-conversion");
-celsiusLink.addEventListener("click", showCelsiusTemp);
+// let celsiusLink = document.querySelector("#c-conversion");
+// celsiusLink.addEventListener("click", showCelsiusTemp);
 
-let celsiusTemp = null;
+// let celsiusTemp = null;
+
+//HTML for adding F back in to line 44: | <a href="#" id="f-conversion">˚F</a></span>
 
 let searchForm = document.querySelector("#search-city-form");
     searchForm.addEventListener("submit", searchCity);

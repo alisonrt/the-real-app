@@ -100,3 +100,7 @@ li:first-letter {
 .source-link {
   color: #2D3142;
 }
+
+.source-link:hover {
+  color: #b4436c;
+}

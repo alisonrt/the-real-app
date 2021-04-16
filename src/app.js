@@ -12,9 +12,35 @@ function dateFormat(timestamp) {
           return `${day} ${hours}:${minutes}`;
     }
 }
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast-temps");
 
+  let days = ["Thu", "Fri", "Sat", "Sun"];
 
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+        <div class="weather-forecast-date">${day}</div>
+        <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+        <div class="weather-forecast-temperatures">
+          <span class="forecast-temp-max"> 18° </span>
+          <span class="forecast-temp-min"> 12° </span>
+        </div>
+      </div>
+  `;
+  });
 
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
 function displayTemp(response) {
     let tempElement = document.querySelector("#temperature");
     let cityElement = document.querySelector("#city");
@@ -24,6 +50,7 @@ function displayTemp(response) {
     let dateElement = document.querySelector("#date");
     let iconElement = document.querySelector("#icon");
 
+
     celsiusTemp = response.data.main.temp;
 
     tempElement.innerHTML = Math.round(celsiusTemp);
@@ -32,7 +59,7 @@ function displayTemp(response) {
     humidityElement.innerHTML = response.data.main.humidity;
     windElement.innerHTML = Math.round(response.data.wind.speed);
     dateElement.innerHTML = dateFormat(response.data.dt *1000);
-    iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 function showFahrenheitTemp (event) {
@@ -81,5 +108,7 @@ function showPosition(position) {
 function getCurrentLocandTemp(event) {
     navigator.geolocation.getCurrentPosition(showPosition);
     }
+displayForecast();
+
 getCurrentLocandTemp();
 

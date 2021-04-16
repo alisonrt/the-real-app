@@ -12,9 +12,9 @@ function dateFormat(timestamp) {
           return `${day} ${hours}:${minutes}`;
     }
 }
-function displayForecast() {
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast-temps");
-
+  console.log(response);
   let days = ["Thu", "Fri", "Sat", "Sun"];
 
   let forecastHTML = `<div class="row">`;
@@ -39,8 +39,16 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
+
+function getForecast(coordinates){
+    // coordinates: {lat: 123.123, lon: 124.124}
+    console.log(coordinates);
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayForecast); // When we call this, we make an API request, then pass the response from that request to displayForecast
+    // response: {data: {daily: [{dt: 1231232, sunrise: 123123123, etc}]}}
+}
+
 function displayTemp(response) {
     let tempElement = document.querySelector("#temperature");
     let cityElement = document.querySelector("#city");
@@ -61,6 +69,11 @@ function displayTemp(response) {
     dateElement.innerHTML = dateFormat(response.data.dt *1000);
     iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     iconElement.setAttribute("alt", response.data.weather[0].description);
+
+    // response: {data: {coord: {lat: 123.123, lon: 124.124}}}
+    // response.data: {coord: {lat: 123.123, lon: 124.124}}
+    // response.data.coord: {lat: 123.123, lon: 124.124}
+    getForecast(response.data.coord); // Take the response object and pass its data.coord value to getForecast, using the example above would mean that we're passing: {lat: 123.123, lon: 124.124} to getForecast
 }
 function showFahrenheitTemp (event) {
     event.preventDefault();
@@ -101,14 +114,12 @@ function searchCity(event) {
 function showPosition(position) {
     let lat = position.coords.latitude;
     let long = position.coords.longitude;
-    let units = "metric";
-    let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`
+    let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`
     axios.get(`${apiURL}&appid=${apiKey}`).then(displayTemp);
-    }
+}
 function getCurrentLocandTemp(event) {
     navigator.geolocation.getCurrentPosition(showPosition);
     }
-displayForecast();
 
 getCurrentLocandTemp();
 

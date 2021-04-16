@@ -1,5 +1,6 @@
 body {
   font-family: "PT Sans", sans-serif;
+  color: #f6f5f5;
 }
 h1 {
   font-size: 24px;
@@ -76,4 +77,18 @@ li:first-letter {
 
 .forecast-temp-min {
   opacity: 0.6;
+}
+.app-wrap {
+  width: 800px;
+  margin: 20px auto;
+  background: #114b5f;
+  padding: 15px;
+  border-radius: 20px;
+}
+.btn {
+  background-color: #f08700;
+}
+
+.card-group {
+  width: 100%;
 }

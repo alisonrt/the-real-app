@@ -26,10 +26,13 @@ li:first-letter {
 .app-wrap {
   max-width: 600px;
   margin: 25px auto;
+  background: #119da4;
+  padding: 15px;
+  border-radius: 20px;
 }
 .weather-app {
   padding: 25px;
-  border: 1px solid;
+
   border-radius: 20px;
 }
 .loc-overview {
@@ -40,7 +43,6 @@ li:first-letter {
   height: 60px;
   width: 60px;s
 }
-
 
 .weather-temp strong {
   font-size: 24px;
@@ -79,22 +81,12 @@ li:first-letter {
 .forecast-temp-min {
   opacity: 0.6;
 }
-.app-wrap {
-  width: 800px;
-  margin: 20px auto;
-  background: #119da4;
-  padding: 15px;
-  border-radius: 20px;
-}
+
 .btn {
   background-color: #b4436c;
 }
 .btn:hover {
   background-color: #ed9390;
-}
-
-.card-group {
-  width: 100%;
 }
 
 .source-link {
